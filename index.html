@@ -5,16 +5,76 @@
   <meta charset="UTF-8" />
   <title>Consulta de Pagos - San Ramón</title>
   <style>
-    body { font-family: sans-serif; margin: 2em; background: #f4f4f4; }
-    input, button { padding: 0.5em; margin: 0.5em 0; width: 300px; }
-    #resultado { background: white; padding: 1em; margin-top: 1em; border-radius: 8px; box-shadow: 0 0 5px rgba(0,0,0,0.1); }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f0f2f5;
+      margin: 0;
+      padding: 2em;
+    }
+    .container {
+      max-width: 800px;
+      margin: auto;
+      background: white;
+      padding: 2em;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    h1 {
+      text-align: center;
+      color: #2c3e50;
+    }
+    input {
+      padding: 0.75em;
+      width: 80%;
+      font-size: 1em;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      margin-bottom: 1em;
+    }
+    button {
+      padding: 0.75em 1.5em;
+      font-size: 1em;
+      background-color: #3498db;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-left: 1em;
+    }
+    button:hover {
+      background-color: #2980b9;
+    }
+    .card {
+      background: #fafafa;
+      border-left: 6px solid #3498db;
+      padding: 1em;
+      margin-top: 1.5em;
+      border-radius: 8px;
+    }
+    .card h2 {
+      margin-top: 0;
+      color: #34495e;
+    }
+    .print-button {
+      background-color: #2ecc71;
+      margin-top: 1em;
+    }
+    pre {
+      white-space: pre-wrap;
+      word-break: break-word;
+      font-family: monospace;
+      font-size: 0.95em;
+    }
   </style>
 </head>
 <body>
-  <h1>Consulta de Pagos - Junta de Saneamiento San Ramón</h1>
-  <input type="text" id="busqueda" placeholder="Ingrese cédula o nombre completo">
-  <button onclick="consultar()">Consultar</button>
-  <div id="resultado"></div>
+  <div class="container">
+    <h1>Consulta de Pagos<br>Junta de Saneamiento San Ramón</h1>
+    <input type="text" id="busqueda" placeholder="Ingrese cédula o nombre completo">
+    <button onclick="consultar()">Consultar</button>
+    <button class="print-button" onclick="window.print()">Imprimir Resumen</button>
+    <div id="resultado"></div>
+  </div>
 
   <script src="pagos_2024.js"></script>
   <script src="pagos_2025.js"></script>

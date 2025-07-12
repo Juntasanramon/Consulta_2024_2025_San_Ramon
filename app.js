@@ -3,6 +3,26 @@ function normalizarTexto(texto) {
   return (texto || '').toString().toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
 }
 
+function generarTabla(datos, titulo) {
+  let meses = ["ENERO", "FEBRERO", "MARZO", "ABRIL", "MAYO", "JUNIO",
+               "JULIO", "AGOSTO", "SETIEMBRE", "OCTUBRE", "NOVIEMBRE", "DICIEMBRE"];
+  let tabla = `<div class="card"><h2>${titulo}</h2>`;
+  tabla += `<table border="1" cellspacing="0" cellpadding="6" style="border-collapse: collapse; width: 100%; font-size: 0.95em;">`;
+  tabla += "<tr><th>Mes</th><th>Monto</th></tr>";
+
+  meses.forEach(mes => {
+    if (datos[mes] !== undefined) {
+      tabla += `<tr><td>${mes}</td><td>${datos[mes]}</td></tr>`;
+    }
+  });
+
+  tabla += `<tr><th>Total</th><th>${datos["TOTAL A PAGAR"] || "—"}</th></tr>`;
+  tabla += `<tr><th>Pagado</th><th>${datos["PAGADO"] || "—"}</th></tr>`;
+  tabla += `<tr><th>Saldo</th><th>${datos["SALDO A PAGAR"] || "—"}</th></tr>`;
+  tabla += "</table></div>";
+  return tabla;
+}
+
 function consultar() {
   const criterio = normalizarTexto(document.getElementById("busqueda").value);
   if (!criterio) return alert("Ingrese un nombre o cédula para buscar.");
@@ -26,10 +46,10 @@ function consultar() {
   }
 
   if (resultado2024) {
-    contenedor.innerHTML += "<h2>Pagos 2024</h2><pre>" + JSON.stringify(resultado2024, null, 2) + "</pre>";
+    contenedor.innerHTML += generarTabla(resultado2024, "Pagos 2024");
   }
 
   if (resultado2025) {
-    contenedor.innerHTML += "<h2>Pagos 2025</h2><pre>" + JSON.stringify(resultado2025, null, 2) + "</pre>";
+    contenedor.innerHTML += generarTabla(resultado2025, "Pagos 2025");
   }
 }
