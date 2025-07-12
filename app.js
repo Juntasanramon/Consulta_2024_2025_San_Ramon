@@ -13,12 +13,12 @@ function generarTabla(datos, titulo) {
   tabla += "<tr><th>Mes</th><th>Monto</th></tr>";
 
   meses.forEach(mes => {
-    if (datos[mes] !== undefined) {
-      const valor = datos[mes];
-      const clase = valor === "pagado" || valor === "PAGADO" || parseInt(valor) > 0
-        ? " style='background-color:#d4edda;'"  // verde
-        : " style='background-color:#f8d7da;'"; // rojo
-      tabla += `<tr${clase}><td>${mes}</td><td>${valor}</td></tr>`;
+    if (mes in datos) {
+      let valor = datos[mes];
+      let esPagado = (valor && (valor.toString().toLowerCase() === "pagado" || parseInt(valor) > 0));
+      const clase = esPagado ? " style='background-color:#d4edda;'" : " style='background-color:#f8d7da;'";
+      const textoMostrar = esPagado ? valor : "-";
+      tabla += `<tr${clase}><td>${mes}</td><td>${textoMostrar}</td></tr>`;
     }
   });
 
