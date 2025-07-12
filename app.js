@@ -7,12 +7,18 @@ function generarTabla(datos, titulo) {
   let meses = ["ENERO", "FEBRERO", "MARZO", "ABRIL", "MAYO", "JUNIO",
                "JULIO", "AGOSTO", "SETIEMBRE", "OCTUBRE", "NOVIEMBRE", "DICIEMBRE"];
   let tabla = `<div class="card"><h2>${titulo}</h2>`;
+  tabla += `<p><strong>Nombre:</strong> ${datos.nombre_apellido || "—"}</p>`;
+  tabla += `<p><strong>Cédula:</strong> ${datos.cedula || "—"}</p>`;
   tabla += `<table border="1" cellspacing="0" cellpadding="6" style="border-collapse: collapse; width: 100%; font-size: 0.95em;">`;
   tabla += "<tr><th>Mes</th><th>Monto</th></tr>";
 
   meses.forEach(mes => {
     if (datos[mes] !== undefined) {
-      tabla += `<tr><td>${mes}</td><td>${datos[mes]}</td></tr>`;
+      const valor = datos[mes];
+      const clase = valor === "pagado" || valor === "PAGADO" || parseInt(valor) > 0
+        ? " style='background-color:#d4edda;'"  // verde
+        : " style='background-color:#f8d7da;'"; // rojo
+      tabla += `<tr${clase}><td>${mes}</td><td>${valor}</td></tr>`;
     }
   });
 
