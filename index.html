@@ -1,0 +1,23 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Consulta de Pagos - San Ramón</title>
+  <style>
+    body { font-family: sans-serif; margin: 2em; background: #f4f4f4; }
+    input, button { padding: 0.5em; margin: 0.5em 0; width: 300px; }
+    #resultado { background: white; padding: 1em; margin-top: 1em; border-radius: 8px; box-shadow: 0 0 5px rgba(0,0,0,0.1); }
+  </style>
+</head>
+<body>
+  <h1>Consulta de Pagos - Junta de Saneamiento San Ramón</h1>
+  <input type="text" id="busqueda" placeholder="Ingrese cédula o nombre completo">
+  <button onclick="consultar()">Consultar</button>
+  <div id="resultado"></div>
+
+  <script src="pagos_2024.js"></script>
+  <script src="pagos_2025.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
